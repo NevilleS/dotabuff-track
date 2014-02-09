@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dotabuff Tracker</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/javascripts/Chart.js"></script>
+  </head>
+  <body>
+  <div id="nav">
+      <ul>
+          <li><div id="urlDiv">Dotabuff URL:<input type=text id="urlInput"></input></div></li>
+      </ul>
+  </div>
+  <div id="content">
+      <table id="heroesPlayed" class="statTable">
+          <tr>
+              <td class="statText"><p>Heroes played: <em>30/100 (30%)</em></p></td>
+              <td class="statChart"><canvas id="heroesChart" class="statChartCanvas" height=200px width=200px></canvas></td>
+          </tr>
+      </table>
+      <div id="heroesRemaining">
+          <p id="heroTitle">Heroes remaining:</p>
+          <table class="heroTable">
+              <tr>
+                  <td class="heroText"><p>Juggernaut</p></td>
+                  <td class="heroImage"><img
+              src="http://dbcdn.elo.io/assets/heroes/juggernaut-da868f817e23e01ca60697afe9264e3d.png" /></td>
+              </tr>
+          </table>
+      </div>
+  </div>
+  </body>
+  <script src="/javascripts/client.js"></script>
+</html>
