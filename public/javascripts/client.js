@@ -9,8 +9,10 @@ $(document).ready(function() {
             alert(data.err);
             return;
         }
-        if (data && data.heroesPlayed && data.heroesPlayed.length !== undefined &&
+        if (data && data.playerName &&
+                data.heroesPlayed && data.heroesPlayed.length !== undefined &&
                 data.heroesRemaining && data.heroesRemaining.length !== undefined) {
+            $("#playerName").html(data.playerName);        
             var numHeroesPlayed = data.heroesPlayed.length;
             var numHeroesRemaining = data.heroesRemaining.length;
             var numHeroesTotal = numHeroesPlayed + data.heroesRemaining.length;
@@ -38,6 +40,11 @@ $(document).ready(function() {
             } else {
                 $("#heroesRemaining").fadeOut(3000);
             }
+            $("#introContent").hide();
+            $("#trackerContent").show();
+        } else {
+            $("#introContent").show();
+            $("#trackerContent").hide();
         }
     }
 

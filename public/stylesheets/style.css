@@ -1,22 +1,22 @@
 /* global constants */
 /* solarized colors */
 html {
-  height: 100%; }
+  padding: 0; }
 
 body {
-  height: 100%;
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-color: #002b36; }
 
-a {
-  color: #00B7FF; }
+#wrapper {
+  width: 100%; }
 
 #nav {
   width: 100%;
   float: left;
   background-color: #002b36;
-  margin: 0 0 1em 0;
+  margin: 0 0 2em 0;
   padding: 0;
   color: white;
   font-size: 20px; }
@@ -31,6 +31,7 @@ a {
   float: left; }
 
 #nav div {
+  height: 100%;
   display: block;
   padding: 10px 16px; }
 
@@ -40,6 +41,11 @@ a {
   border-radius: 4px;
   font-size: 20px; }
 
+.clearfloat {
+  height: 0;
+  width: 0;
+  clear: both; }
+
 #content {
   width: 800px;
   height: 100%;
@@ -47,11 +53,18 @@ a {
   padding: 0;
   padding-left: 10px; }
 
+#playerName {
+  margin: 0; }
+
+#introContent h1 {
+  margin: 0; }
+
 .statTable {
   width: 100%;
   border-spacing: 0; }
 
 .statTable .statText {
+  width: 60%;
   padding: 0;
   font-color: #002b36;
   font-weight: bold;
@@ -64,17 +77,29 @@ a {
   width: 100%; }
 
 #heroesRemainingTitle {
+  margin: 0;
   font-color: #002b36;
   font-size: 24px;
   font-weight: bold; }
 
+#heroesRemainingTitle em {
+  font-size: 40px; }
+
 #heroesRemainingTable {
-  width: 100%;
+  margin-left: 20px;
+  width: 50%;
   border-spacing: 0; }
 
-#heroesRemainingTable td {
+#heroesRemainingTable td.heroImage {
   height: 40px; }
 
 #heroesRemainingTable img {
   max-height: 100%;
   max-width: 100%; }
+
+#heroesRemainingTable .heroText {
+  margin: 0;
+  padding: 0;
+  font-color: #002b36;
+  font-size: 18px;
+  font-weight: bold; }
