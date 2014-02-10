@@ -91,19 +91,19 @@ a {
 #heroesRemaining {
     width: 100%;
 }
-#heroTitle {
+#heroesRemainingTitle {
     font-color: $base03;
     font-size: 24px;
     font-weight: bold;
 }
-.heroTable {
+#heroesRemainingTable {
     width: 100%;
     border-spacing: 0;
 }
-.heroTable td {
+#heroesRemainingTable td {
     height: 40px;
 }
-.heroTable img {
+#heroesRemainingTable img {
     max-height: 100%;
     max-width: 100%;
 }

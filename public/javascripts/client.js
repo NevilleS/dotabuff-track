@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var heroesChartData = [{value: 30, color: "#f7464a"},{value: 70, color: "#aeaeae"}];
+    var heroesChartData = [{value: 30, color: "#268bd2"},{value: 70, color: "#93a1a1"}];
     var ctx = $("#heroesChart").get(0).getContext("2d");
     var heroesChart = new Chart(ctx).Doughnut(heroesChartData);
 
@@ -9,15 +9,35 @@ $(document).ready(function() {
             alert(data.err);
             return;
         }
-        if (data && data.heroesPlayed && data.heroesPlayed.length && data.heroesTotal && data.heroesTotal > 0 && data.heroesRemaining) {
+        if (data && data.heroesPlayed && data.heroesPlayed.length !== undefined &&
+                data.heroesRemaining && data.heroesRemaining.length !== undefined) {
             var numHeroesPlayed = data.heroesPlayed.length;
-            var heroPercentage = Math.round((numHeroesPlayed / data.heroesTotal) * 100);
-            $("#heroesPlayedText").html(numHeroesPlayed + "/" + data.heroesTotal + " (" + heroPercentage + "%)");
+            var numHeroesRemaining = data.heroesRemaining.length;
+            var numHeroesTotal = numHeroesPlayed + data.heroesRemaining.length;
+            var heroPercentage = Math.round((numHeroesPlayed / numHeroesTotal) * 100);
+            $("#heroesPlayedText").html(numHeroesPlayed + "/" + numHeroesTotal + " (" + heroPercentage + "%)");
 
             // Render chart data
             heroesChartData[0].value = numHeroesPlayed;
-            heroesChartData[1].value = data.heroesTotal - numHeroesPlayed;
+            heroesChartData[1].value = numHeroesRemaining;
             heroesChart = new Chart(ctx).Doughnut(heroesChartData);
+
+            // Update heroes remaining
+            $("#heroesRemainingText").html(numHeroesRemaining);
+            if (numHeroesRemaining > 0) {
+                // Wipe table and repopulate with data.heroesRemaining
+                var heroTable = $("#heroesRemainingTable");
+                heroTable.empty();
+                for (i = 0; i < data.heroesRemaining.length; i++) {
+                    console.log("data.heroesRemaining[" + i + "]: " + data.heroesRemaining[i]);
+                    var heroName = data.heroesRemaining[i].name;
+                    var heroImage = data.heroesRemaining[i].image;
+                    console.log("add " + heroName);
+                    heroTable.append("<tr><td class=\"heroText\"><p>" + heroName + "</p><td class=\"heroImage\"><img src=\"" + heroImage + "\" /></td></tr>");
+                }
+            } else {
+                $("#heroesRemaining").fadeOut(3000);
+            }
         }
     }
 
