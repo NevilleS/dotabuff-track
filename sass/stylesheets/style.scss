@@ -37,8 +37,7 @@ a {
 #nav {
     width: 100%;
     float: left;
-    background-color: $base00;
-    border-bottom: 1px solid black;
+    background-color: $base03;
     margin: 0 0 1em 0;
     padding: 0;
     color: white;
@@ -57,17 +56,20 @@ a {
     display: block;
     padding: 10px 16px;
 }
+#nav #urlInput {
+    width: 200px;
+    margin-left: 10px;
+    border-radius:4px;
+    font-size: 20px;
+}
 
 // content
 #content {
     width: $contentWidth;
-    background-color: $base1;
     height: 100%;
     margin: 0 auto;
     padding: 0;
     padding-left: 10px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
 }
 
 // .statTable
@@ -77,6 +79,7 @@ a {
 }
 .statTable .statText {
     padding: 0;
+    font-color: $base03;
     font-weight: bold;
     font-size: 24px;
 }
@@ -89,6 +92,7 @@ a {
     width: 100%;
 }
 #heroTitle {
+    font-color: $base03;
     font-size: 24px;
     font-weight: bold;
 }

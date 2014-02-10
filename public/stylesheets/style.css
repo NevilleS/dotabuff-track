@@ -15,8 +15,7 @@ a {
 #nav {
   width: 100%;
   float: left;
-  background-color: #657b83;
-  border-bottom: 1px solid black;
+  background-color: #002b36;
   margin: 0 0 1em 0;
   padding: 0;
   color: white;
@@ -35,15 +34,18 @@ a {
   display: block;
   padding: 10px 16px; }
 
+#nav #urlInput {
+  width: 200px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 20px; }
+
 #content {
   width: 800px;
-  background-color: #93a1a1;
   height: 100%;
   margin: 0 auto;
   padding: 0;
-  padding-left: 10px;
-  border-left: 1px solid black;
-  border-right: 1px solid black; }
+  padding-left: 10px; }
 
 .statTable {
   width: 100%;
@@ -51,6 +53,7 @@ a {
 
 .statTable .statText {
   padding: 0;
+  font-color: #002b36;
   font-weight: bold;
   font-size: 24px; }
 
@@ -61,6 +64,7 @@ a {
   width: 100%; }
 
 #heroTitle {
+  font-color: #002b36;
   font-size: 24px;
   font-weight: bold; }
 
