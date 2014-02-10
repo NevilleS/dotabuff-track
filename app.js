@@ -39,7 +39,11 @@ app.get('/', routes.index);
 app.get('/track', function(req, res) {
     var url = req.query.url;
     console.log("Received update url: " + url);
-    var data = {};
+    var data = {
+        heroesPlayed: [],
+        heroesTotal: 120,
+        heroesRemaining: []
+    };
 
     // request dotabuff data
     var dotabuffMatch = /^(?:http:\/\/)?dotabuff\.com\/players\/(\d+)$/.exec(url);
@@ -61,7 +65,7 @@ app.get('/track', function(req, res) {
                     return;
                 }
 
-                // scrape the body for dotabuff data
+                // scrape the body for heroes played by the playerId
                 $ = cheerio.load(body);
                 var titleText = $("#content-header .content-header-title h1").text();
                 console.log("titleText: " + titleText);
@@ -70,12 +74,34 @@ app.get('/track', function(req, res) {
                     var heroName = $(this).find(".hero-link").text();
                     var heroImg = $(this).find(".image-hero").attr('src');
                     if (heroName && heroImg) {
-                        console.log("heroName: " + heroName);
                         data.heroesPlayed.push({name: heroName, image: heroImg});
                     }
                 });
                 console.log("heroesPlayed: " + data.heroesPlayed.length);
+                res.send(data);
             });
+            options.url = "http://dotabuff.com/heroes/played";
+            /*
+            request(options, function(err, resp, body) {
+                if (err) {
+                    console.log("request err: " + err);
+                    return;
+                }
+
+                // scrape the body for all heroes
+                var heroesAvailable = [];
+                $ = cheerio.load(body);
+                data.heroesPlayed = [];
+                $("article tbody tr").each(function() {
+                    var heroName = $(this).find(".hero-link").text();
+                    var heroImg = $(this).find(".image-hero").attr('src');
+                    if (heroName && heroImg) {
+                        heroesAvailable.push({name: heroName, image: heroImg});
+                    }
+                });
+                console.log("heroesAvailable: " + heroesAvailable.length);
+            });
+            */
         } else {
             throw "Bad Dotabuff URL, must link to a player page (e.g. http://dotabuff.com/players/109473826)";
         }
@@ -91,11 +117,6 @@ app.get('/track', function(req, res) {
         res.send(data);
         return;
     }
-
-    // update tracker data on client
-    data.heroesTotal = 100;
-    data.heroesRemaining = data.heroesPlayed;
-    res.send(data);
 });
 
 http.createServer(app).listen(app.get('port'), function(){

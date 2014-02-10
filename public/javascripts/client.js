@@ -11,12 +11,12 @@ $(document).ready(function() {
         }
         if (data && data.heroesPlayed && data.heroesPlayed.length && data.heroesTotal && data.heroesTotal > 0 && data.heroesRemaining) {
             var numHeroesPlayed = data.heroesPlayed.length;
-            var heroPercentage = Math.round((data.heroesPlayed / data.heroesTotal) * 100);
-            $("#heroesPlayedText").html(data.heroesPlayed + "/" + data.heroesTotal + " (" + heroPercentage + "%)");
+            var heroPercentage = Math.round((numHeroesPlayed / data.heroesTotal) * 100);
+            $("#heroesPlayedText").html(numHeroesPlayed + "/" + data.heroesTotal + " (" + heroPercentage + "%)");
 
             // Render chart data
-            heroesChartData[0].value = data.heroesPlayed;
-            heroesChartData[1].value = data.heroesTotal - data.heroesPlayed;
+            heroesChartData[0].value = numHeroesPlayed;
+            heroesChartData[1].value = data.heroesTotal - numHeroesPlayed;
             heroesChart = new Chart(ctx).Doughnut(heroesChartData);
         }
     }
