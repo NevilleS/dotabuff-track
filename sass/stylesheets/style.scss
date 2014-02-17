@@ -97,32 +97,32 @@ body {
     font-size: 40px;
 }
 
-// heroesRemaining
-#heroesRemaining {
+// heroesRemaining & heroesNoWins tables
+.heroTableDiv {
     width: 100%;
 }
-#heroesRemainingTitle {
+.heroTableDivTitle {
     margin: 0;
     font-color: $base03;
     font-size: 24px;
     font-weight: bold;
 }
-#heroesRemainingTitle em {
+.heroTableDivTitle em {
     font-size: 40px;
 }
-#heroesRemainingTable {
+.heroTableDiv table {
     margin-left: 20px;
     width: 50%;
     border-spacing: 0;
 }
-#heroesRemainingTable td.heroImage {
+.heroTableDiv table td.heroImage {
     height: 40px;
 }
-#heroesRemainingTable img {
+.heroTableDiv table img {
     max-height: 100%;
     max-width: 100%;
 }
-#heroesRemainingTable .heroText {
+.heroTableDiv table .heroText {
     margin: 0;
     padding: 0;
     font-color: $base03;

@@ -11,10 +11,12 @@ $(document).ready(function() {
         }
         if (data && data.playerName &&
                 data.heroesPlayed && data.heroesPlayed.length !== undefined &&
-                data.heroesRemaining && data.heroesRemaining.length !== undefined) {
+                data.heroesRemaining && data.heroesRemaining.length !== undefined &&
+                data.heroesNoWins && data.heroesNoWins.length !== undefined) {
             $("#playerName").html(data.playerName);        
             var numHeroesPlayed = data.heroesPlayed.length;
             var numHeroesRemaining = data.heroesRemaining.length;
+            var numHeroesNoWins = data.heroesNoWins.length;
             var numHeroesTotal = numHeroesPlayed + data.heroesRemaining.length;
             var heroPercentage = Math.round((numHeroesPlayed / numHeroesTotal) * 100);
             $("#heroesPlayedText").html(numHeroesPlayed + "/" + numHeroesTotal + " (" + heroPercentage + "%)");
@@ -30,6 +32,7 @@ $(document).ready(function() {
                 // Wipe table and repopulate with data.heroesRemaining
                 var heroTable = $("#heroesRemainingTable");
                 heroTable.empty();
+                heroTable.hide();
                 for (i = 0; i < data.heroesRemaining.length; i++) {
                     console.log("data.heroesRemaining[" + i + "]: " + data.heroesRemaining[i]);
                     var heroName = data.heroesRemaining[i].name;
@@ -37,9 +40,29 @@ $(document).ready(function() {
                     console.log("add " + heroName);
                     heroTable.append("<tr><td class=\"heroText\"><p>" + heroName + "</p><td class=\"heroImage\"><img src=\"" + heroImage + "\" /></td></tr>");
                 }
+                heroTable.slideDown(1000);
             } else {
                 $("#heroesRemaining").fadeOut(3000);
             }
+
+            // Update heroes no wins 
+            $("#heroesNoWinsText").html(numHeroesNoWins);
+            if (numHeroesNoWins > 0) {
+                // Wipe table and repopulate with data.heroesNoWins
+                var heroTable = $("#heroesNoWinsTable");
+                heroTable.empty();
+                for (i = 0; i < data.heroesNoWins.length; i++) {
+                    console.log("data.heroesNoWins[" + i + "]: " + data.heroesNoWins[i]);
+                    var heroName = data.heroesNoWins[i].name;
+                    var heroImage = data.heroesNoWins[i].image;
+                    console.log("add " + heroName);
+                    heroTable.append("<tr><td class=\"heroText\"><p>" + heroName + "</p><td class=\"heroImage\"><img src=\"" + heroImage + "\" /></td></tr>");
+                }
+            } else {
+                $("#heroesNoWins").fadeOut(3000);
+            }
+
+            // Show the tracker content
             $("#introContent").hide();
             $("#trackerContent").show();
         } else {
