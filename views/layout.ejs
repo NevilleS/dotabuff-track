@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dotabuff Tracker</title>
+    <!--link rel='stylesheet' href='http://meyerweb.com/eric/tools/css/reset/reset.css' /-->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/javascripts/Chart.js"></script>
+  </head>
+  <body>
+  <div id="nav">
+      <ul>
+          <li>
+              <div id="urlDiv">
+                  Dotabuff URL:<form action="/track"> <input type=text id="urlInput" name="url"></input></form>
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div id="content">
+    <%- body %>
+  </div>
+  </body>
+  <script src="/javascripts/client.js"></script>
+</html>

@@ -1,50 +1,7 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Dotabuff Tracker</title>
-    <!--link rel='stylesheet' href='http://meyerweb.com/eric/tools/css/reset/reset.css' /-->
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="/javascripts/Chart.js"></script>
-  </head>
-  <body>
-  <div id="nav">
-      <ul>
-          <li><div id="urlDiv">Dotabuff URL:<input type=text id="urlInput"></input></div></li>
-      </ul>
-  </div>
-  <div id="content">
-      <div id="introContent">
-          <h1>Welcome!</h1>
-          <p>Enter your Dotabuff URL above to get started (e.g. <a href="http://dotabuff.com/players/10669028">http://dotabuff.com/players/10669028</a>)</p>
-          <p>Source available at <a href="https://github.com/NevilleS/dotabuff-track">https://github.com/NevilleS/dotabuff-track</a></p>
-      </div>
-      <div id="trackerContent" style="display: none">
-          <h1 id="playerName"></h1>
-          <div id="heroesRemaining" class="heroTableDiv">
-              <table id="heroesPlayed" class="statTable">
-                  <tr>
-                      <td class="statText"><p>Heroes played:<br/><em id="heroesPlayedText"></em></p></td>
-                      <td class="statChart"><canvas id="heroesPlayedChart" class="statChartCanvas" height=150px width=150px></canvas></td>
-                  </tr>
-              </table>
-              <p id="heroesRemainingTitle" class="heroTableDivTitle">Heroes to play: <em id="heroesRemainingText"></em></p>
-              <table id="heroesRemainingTable" class="heroTable">
-              </table>
-          </div>
-          <div id="heroesNoWins" class="heroTableDiv">
-              <table id="heroesWon" class="statTable">
-                  <tr>
-                      <td class="statText"><p>Heroes won:<br/><em id="heroesWonText"></em></p></td>
-                      <td class="statChart"><canvas id="heroesWonChart" class="statChartCanvas" height=150px width=150px></canvas></td>
-                  </tr>
-              </table>
-              <p id="heroesNoWinsTitle" class="heroTableDivTitle">Heroes to win: <em id="heroesNoWinsText"></em></p>
-              <table id="heroesNoWinsTable" class="heroTable">
-              </table>
-          </div>
-      </div>
-  </div>
-  </body>
-  <script src="/javascripts/client.js"></script>
-</html>
+<% layout('layout') -%>
+<div id="introContent">
+    <h1>Welcome!</h1>
+    <p>Enter your Dotabuff URL above to get started (e.g. <a href="http://dotabuff.com/players/10669028">http://dotabuff.com/players/10669028</a>)</p>
+    <p>Source available at <a href="https://github.com/NevilleS/dotabuff-track">https://github.com/NevilleS/dotabuff-track</a></p>
+</div>

@@ -33,6 +33,12 @@ body {
 #nav div {
   height: 100%;
   display: block;
+  padding: 15px 16px; }
+
+#nav form {
+  display: inline; }
+
+#nav #urlDiv {
   padding: 10px 16px; }
 
 #nav #urlInput {
@@ -50,6 +56,9 @@ body {
 
 #playerName {
   margin: 0; }
+
+#player img {
+  height: 30px; }
 
 #introContent h1 {
   margin: 0; }

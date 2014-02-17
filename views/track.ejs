@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<% layout('layout') -%>
+<div id="trackerContent" style="display: none">
+    <div id="player">
+        <h1 id="playerName"></h1>
+    </div>
+    <div id="heroesRemaining" class="heroTableDiv">
+        <table id="heroesPlayed" class="statTable">
+            <tr>
+                <td class="statText"><p>Heroes played:<br/><em id="heroesPlayedText"></em></p></td>
+                <td class="statChart"><canvas id="heroesPlayedChart" class="statChartCanvas" height=150px width=150px></canvas></td>
+            </tr>
+        </table>
+        <p id="heroesRemainingTitle" class="heroTableDivTitle">Heroes to play: <em id="heroesRemainingText"></em></p>
+        <table id="heroesRemainingTable" class="heroTable">
+        </table>
+    </div>
+    <div id="heroesNoWins" class="heroTableDiv">
+        <table id="heroesWon" class="statTable">
+            <tr>
+                <td class="statText"><p>Heroes won:<br/><em id="heroesWonText"></em></p></td>
+                <td class="statChart"><canvas id="heroesWonChart" class="statChartCanvas" height=150px width=150px></canvas></td>
+            </tr>
+        </table>
+        <p id="heroesNoWinsTitle" class="heroTableDivTitle">Heroes to win: <em id="heroesNoWinsText"></em></p>
+        <table id="heroesNoWinsTable" class="heroTable">
+        </table>
+    </div>
+</div>
+<script type='text/javascript'>
+    var data = <%- JSON.stringify(data) %>
+    $(document).ready(function() {
+        updateTracker(data);
+    });
+</script>
