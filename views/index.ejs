@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Dotabuff Tracker</title>
+    <!--link rel='stylesheet' href='http://meyerweb.com/eric/tools/css/reset/reset.css' /-->
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="/javascripts/Chart.js"></script>
@@ -20,20 +21,26 @@
       </div>
       <div id="trackerContent" style="display: none">
           <h1 id="playerName"></h1>
-          <table id="heroesPlayed" class="statTable">
-              <tr>
-                  <td class="statText"><p>Heroes played: <em id="heroesPlayedText"></em></p></td>
-                  <td class="statChart"><canvas id="heroesChart" class="statChartCanvas" height=150px width=150px></canvas></td>
-              </tr>
-          </table>
           <div id="heroesRemaining" class="heroTableDiv">
-              <p id="heroesRemainingTitle" class="heroTableDivTitle">Unplayed heroes: <em id="heroesRemainingText"></em></p>
-              <table id="heroesRemainingTable">
+              <table id="heroesPlayed" class="statTable">
+                  <tr>
+                      <td class="statText"><p>Heroes played:<br/><em id="heroesPlayedText"></em></p></td>
+                      <td class="statChart"><canvas id="heroesPlayedChart" class="statChartCanvas" height=150px width=150px></canvas></td>
+                  </tr>
+              </table>
+              <p id="heroesRemainingTitle" class="heroTableDivTitle">Heroes to play: <em id="heroesRemainingText"></em></p>
+              <table id="heroesRemainingTable" class="heroTable">
               </table>
           </div>
           <div id="heroesNoWins" class="heroTableDiv">
-              <p id="heroesNoWinsTitle" class="heroTableDivTitle">Winless heroes: <em id="heroesNoWinsText"></em></p>
-              <table id="heroesNoWinsTable">
+              <table id="heroesWon" class="statTable">
+                  <tr>
+                      <td class="statText"><p>Heroes won:<br/><em id="heroesWonText"></em></p></td>
+                      <td class="statChart"><canvas id="heroesWonChart" class="statChartCanvas" height=150px width=150px></canvas></td>
+                  </tr>
+              </table>
+              <p id="heroesNoWinsTitle" class="heroTableDivTitle">Heroes to win: <em id="heroesNoWinsText"></em></p>
+              <table id="heroesNoWinsTable" class="heroTable">
               </table>
           </div>
       </div>

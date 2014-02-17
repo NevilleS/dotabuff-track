@@ -1,8 +1,4 @@
 $(document).ready(function() {
-    var heroesChartData = [{value: 30, color: "#268bd2"},{value: 70, color: "#93a1a1"}];
-    var ctx = $("#heroesChart").get(0).getContext("2d");
-    var heroesChart = new Chart(ctx).Doughnut(heroesChartData);
-
     // Update the tracker data
     var updateTracker = function(data) {
         if (data && data.err) {
@@ -14,49 +10,61 @@ $(document).ready(function() {
                 data.heroesRemaining && data.heroesRemaining.length !== undefined &&
                 data.heroesNoWins && data.heroesNoWins.length !== undefined) {
             $("#playerName").html(data.playerName);        
+
+            // Render hero plays data
             var numHeroesPlayed = data.heroesPlayed.length;
             var numHeroesRemaining = data.heroesRemaining.length;
-            var numHeroesNoWins = data.heroesNoWins.length;
             var numHeroesTotal = numHeroesPlayed + data.heroesRemaining.length;
-            var heroPercentage = Math.round((numHeroesPlayed / numHeroesTotal) * 100);
-            $("#heroesPlayedText").html(numHeroesPlayed + "/" + numHeroesTotal + " (" + heroPercentage + "%)");
-
-            // Render chart data
-            heroesChartData[0].value = numHeroesPlayed;
-            heroesChartData[1].value = numHeroesRemaining;
-            heroesChart = new Chart(ctx).Doughnut(heroesChartData);
+            var heroPlayedPercentage = Math.round((numHeroesPlayed / numHeroesTotal) * 100);
+            $("#heroesPlayedText").html(numHeroesPlayed + "/" + numHeroesTotal + " (" + heroPlayedPercentage + "%)");
+            var heroesPlayedChartData = [
+                {value: numHeroesPlayed, color: "#268bd2"},
+                {value: numHeroesRemaining, color: "#93a1a1"}
+            ];
+            var ctx = $("#heroesPlayedChart").get(0).getContext("2d");
+            var heroesPlayedChart = new Chart(ctx).Doughnut(heroesPlayedChartData);
 
             // Update heroes remaining
             $("#heroesRemainingText").html(numHeroesRemaining);
             if (numHeroesRemaining > 0) {
                 // Wipe table and repopulate with data.heroesRemaining
-                var heroTable = $("#heroesRemainingTable");
-                heroTable.empty();
-                heroTable.hide();
+                var heroesRemainingTable = $("#heroesRemainingTable");
+                heroesRemainingTable.empty();
                 for (i = 0; i < data.heroesRemaining.length; i++) {
                     console.log("data.heroesRemaining[" + i + "]: " + data.heroesRemaining[i]);
                     var heroName = data.heroesRemaining[i].name;
                     var heroImage = data.heroesRemaining[i].image;
                     console.log("add " + heroName);
-                    heroTable.append("<tr><td class=\"heroText\"><p>" + heroName + "</p><td class=\"heroImage\"><img src=\"" + heroImage + "\" /></td></tr>");
+                    heroesRemainingTable.append("<tr><td class=\"heroText\"><p>" + heroName + "</p><td class=\"heroImage\"><img src=\"" + heroImage + "\" /></td></tr>");
                 }
-                heroTable.slideDown(1000);
             } else {
                 $("#heroesRemaining").fadeOut(3000);
             }
+
+            // Render hero wins chart data
+            var numHeroesNoWins = data.heroesNoWins.length;
+            var numHeroesWon = numHeroesTotal - numHeroesNoWins;
+            var heroesWonPercentage = Math.round((numHeroesWon / numHeroesTotal) * 100);
+            $("#heroesWonText").html(numHeroesWon + "/" + numHeroesTotal + " (" + heroesWonPercentage + "%)");
+            var heroesWonChartData = [
+                {value: numHeroesWon, color: "#268bd2"},
+                {value: numHeroesNoWins, color: "#93a1a1"}
+            ];
+            var ctx = $("#heroesWonChart").get(0).getContext("2d");
+            var heroesWonChart = new Chart(ctx).Doughnut(heroesWonChartData);
 
             // Update heroes no wins 
             $("#heroesNoWinsText").html(numHeroesNoWins);
             if (numHeroesNoWins > 0) {
                 // Wipe table and repopulate with data.heroesNoWins
-                var heroTable = $("#heroesNoWinsTable");
-                heroTable.empty();
+                var heroesNoWinsTable = $("#heroesNoWinsTable");
+                heroesNoWinsTable.empty();
                 for (i = 0; i < data.heroesNoWins.length; i++) {
                     console.log("data.heroesNoWins[" + i + "]: " + data.heroesNoWins[i]);
                     var heroName = data.heroesNoWins[i].name;
                     var heroImage = data.heroesNoWins[i].image;
                     console.log("add " + heroName);
-                    heroTable.append("<tr><td class=\"heroText\"><p>" + heroName + "</p><td class=\"heroImage\"><img src=\"" + heroImage + "\" /></td></tr>");
+                    heroesNoWinsTable.append("<tr><td class=\"heroText\"><p>" + heroName + "</p><td class=\"heroImage\"><img src=\"" + heroImage + "\" /></td></tr>");
                 }
             } else {
                 $("#heroesNoWins").fadeOut(3000);

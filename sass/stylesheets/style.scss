@@ -99,7 +99,7 @@ body {
 
 // heroesRemaining & heroesNoWins tables
 .heroTableDiv {
-    width: 100%;
+    width: $contentWidth / 2;
 }
 .heroTableDivTitle {
     margin: 0;
@@ -110,22 +110,30 @@ body {
 .heroTableDivTitle em {
     font-size: 40px;
 }
-.heroTableDiv table {
+.heroTableDiv .heroTable {
     margin-left: 20px;
-    width: 50%;
+    width: 80%;
     border-spacing: 0;
 }
-.heroTableDiv table td.heroImage {
+.heroTableDiv .heroTable td.heroImage {
     height: 40px;
 }
-.heroTableDiv table img {
+.heroTableDiv .heroTable img {
     max-height: 100%;
     max-width: 100%;
 }
-.heroTableDiv table .heroText {
+.heroTableDiv .heroTable .heroText {
     margin: 0;
     padding: 0;
     font-color: $base03;
     font-size: 18px;
     font-weight: bold;
+}
+
+#heroesRemaining {
+    float: left;
+}
+
+#heroesNoWins {
+    float: right;
 }
